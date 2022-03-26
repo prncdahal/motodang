@@ -15,6 +15,10 @@ code {
 :root{
   --bs-primary:red;
 }
+
+.main-content{
+  min-height:70vh;
+}
 /* Billboard */
 
 .billboard{

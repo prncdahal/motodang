@@ -19,7 +19,7 @@ const Navbar = () => {
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
         
-      <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
+      <ul className="navbar-nav mx-auto mb-2 gap-4 mb-lg-0">
         <li className="nav-item">
           <Link className="nav-link active" to='/'>Home</Link>
         </li>
@@ -44,7 +44,8 @@ const Navbar = () => {
   </div>
 </nav>
 
-<Routes>
+<main className='main-content'>
+  <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="/about" element={<About/>} />
       <Route path="/products" element={<Products/>} />
@@ -53,6 +54,7 @@ const Navbar = () => {
       <Route path="*" element={<div>Error</div>}/>
       
     </Routes>
+</main>
 </BrowserRouter>
     </>
   )
