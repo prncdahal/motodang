@@ -1,9 +1,22 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { Home, About, Products, Cart, Contact, Login } from '../pages';
+import {
+	Home,
+	About,
+	Products,
+	Cart,
+	Contact,
+	Login,
+	LogoutButton,
+	Profile,
+} from '../pages';
 import logo from '../assets/images/logo.png';
+import LoginButton from '../pages/Login';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Navbar = () => {
+	const { user, isAuthenticated, isLoading } = useAuth0();
+
 	return (
 		<>
 			<BrowserRouter>
@@ -54,24 +67,19 @@ const Navbar = () => {
 										Contact
 									</Link>
 								</li>
-								<li className="nav-item"></li>
 							</ul>
 
-							<div class="nav-right-bar">
-								<Link
-									className="d-inline-block link-light me-2 text-decoration-none "
-									to="/login"
-								>
-									<em className="bi bi-person"></em>Login/register
-								</Link>
-								<strong class="position-relative">
+							<div className="nav-right-bar">
+								{!isAuthenticated ? <LoginButton /> : <LogoutButton />}
+
+								<strong className="position-relative">
 									<em class="bi bi-cart text-light fs-5"></em>
 									<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-										2<span class="visually-hidden">unread messages</span>
+										2
 									</span>
 								</strong>
-								<span class="text-light ms-4">Rs 0.00</span>
-								<em class="bi bi-search text-light ms-3"></em>
+								<span className="text-light ms-4">Rs 0.00</span>
+								<em className="bi bi-search text-light ms-3"></em>
 							</div>
 						</div>
 					</div>
@@ -84,7 +92,7 @@ const Navbar = () => {
 						<Route path="/products" element={<Products />} />
 						<Route path="/cart" element={<Cart />} />
 						<Route path="/contact" element={<Contact />} />
-						<Route path="/login" element={<Login />} />
+						<Route path="/profile" element={<Profile />} />
 						<Route path="*" element={<div>Error</div>} />
 					</Routes>
 				</main>
