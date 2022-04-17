@@ -10,9 +10,9 @@ ReactDOM.render(
 		domain="dev-7jy6qqoa.us.auth0.com"
 		clientId="90x5bAMqExNG2QeYDnUpyUhig2EtTW5E"
 		redirectUri={window.location.origin}
-		onRedirectCallback={() => {
-			window.location.href = '/profile';
-		}}
+// 		onRedirectCallback={() => {
+// 			window.location.href = '/profile';
+// 		}}
 	>
 		<App />
 	</Auth0Provider>,
